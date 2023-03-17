@@ -1,0 +1,36 @@
+<div class="flex flex-col gap-5">
+    <h1 class="text-center text-[20px]">Delete Product</h1>
+
+    <select [ngClass]="{'bg-blue-400': listingSelected}" class="w-[300px] p-3 rounded font-bold"
+        (change)="handleListingChange($event)">
+        <option>Select listing</option>
+        <option class="" *ngFor="let listing of listings" [value]="listing.id">
+            {{listing.title}}
+        </option>
+    </select>
+
+    <select [ngClass]="{'bg-blue-400': boxSelected}" class="w-[300px] p-3 rounded font-bold"
+        (change)="handleBoxChange($event)" *ngIf="listingSelected">
+        <option>Select box</option>
+        <option *ngFor="let box of selectedListingBox" [value]="box.id">
+            {{box.id}}
+        </option>
+    </select>
+
+    <p class="text-white p-4 font-bold bg-red-400 rounded text-center" *ngIf="!selectedBoxProducts.length && boxSelected">
+        No products in this box
+    </p>
+    <select [(ngModel)]="selectedProductId" *ngIf="boxSelected && selectedBoxProducts.length" [ngClass]="{'bg-blue-400': selectedProductId.length}"
+        class="w-[300px] p-3 rounded">
+        <option value="">Select Product</option>
+        <option *ngFor="let item of selectedBoxProducts" [value]="item.id">
+            {{item.title}}
+        </option>
+    </select>
+
+    <button (click)="deleteProduct()" [disabled]="!selectedProductId.length" class="p-3 bg-green-400 rounded"
+        *ngIf="selectedProductId.length">
+        Delete
+    </button>
+
+</div>

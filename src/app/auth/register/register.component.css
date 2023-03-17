@@ -1,0 +1,6 @@
+.bgc {
+    height: 100vh;
+    background: rgb(159,131,213);
+
+    background: linear-gradient(90deg, rgba(159,131,213,1) 30%, rgba(71,147,255,1) 61%, rgba(53,56,220,1) 89%, rgba(42,1,199,1) 90%); 
+}

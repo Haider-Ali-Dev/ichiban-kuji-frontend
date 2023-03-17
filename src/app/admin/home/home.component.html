@@ -1,0 +1,164 @@
+<div class="p-5">
+    <h1 class="text-[30px] text-center">Admin panel</h1>
+    <div class="flex justify-center mb-10">
+        <div class="p-5 rounded border-2 w-fit  bg-gray-300">
+            <div class="">
+                <h1 class="text-[20px] text-center">Stats</h1>
+                <div>
+                    <p>
+                        User Count: {{numberOfUsers}}
+                    </p>
+                </div>
+                <div>
+                    <p *ngIf="status">
+                        <span class="material-icons text-blue-500">
+                            thumb_up
+                        </span>
+                        Server is Up
+                    </p>
+                    <p *ngIf="!status">
+                        <span class="material-icons text-red-500">
+                            thumb_down
+                        </span>
+                        Server is down
+                    </p>
+                </div>
+            </div>
+            <div class="border-t-2 border-black">
+                <h1 class="font-bold text-center text-[20px]">
+
+                    Info
+                </h1>
+
+                <div class="flex gap-2">
+                    <div class="p-5 rounded bg-violet-200 w-[10px]"></div>
+                    <p>This colour means that the button is disabled, you are not fulfilling the form's required field
+                        or
+                        its rules related to those fields.</p>
+                </div>
+
+                <div class="flex gap-2">
+                    <div class="p-5 rounded bg-violet-400 w-[10px]"></div>
+                    <p>This colour means that the button is not disbaled and a click to the button will preform the
+                        action.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="md:flex md:flex-col grid grid-cols-4 gap-5">
+        <div class="p-4 flex flex-col w-fit bg-slate-400 rounded">
+            <h1 class="text-center text-[20px]">Create Listing</h1>
+            <p *ngIf="message.for === 'LISTING_CREATION'">
+                {{message.message}}
+            </p>
+            <input (change)="setTitle($event)" class="p-3" placeholder="Title">
+            <input (change)="setFile($event)" type="File">
+            <button [disabled]="!fileIsUploaded || !this.listingtitle"
+                class="disabled:bg-violet-200 mt-2 p-3 rounded bg-blue-400" (click)="uploadFile()">Create</button>
+        </div>
+
+        <div class="p-4 flex flex-col w-fit bg-slate-400 rounded">
+            <h1 class="text-[20px] text-center">Create Box</h1>
+            <select [(ngModel)]="listingId" class="p-3 rounded">
+                <option value="">Please select the listing</option>
+                <option *ngFor="let listing of listings" [value]="listing.id">{{listing.title}}</option>
+            </select>
+            <input [(ngModel)]="boxPrice" class="mt-2 p-3" placeholder="Price" type="number">
+            <div>
+                <p>Current Added Products: {{productList.length}}</p>
+                <app-box-form [listings]="listings" [productList]="productList"></app-box-form>
+            </div>
+            <button (click)="createBox()" [disabled]="!productList.length || !boxPrice || !listingId"
+                class="disabled:bg-violet-200  mt-2 p-3 rounded bg-blue-400">Create Box</button>
+
+        </div>
+
+        <div class="p-4 flex flex-col w-fit bg-slate-400 rounded">
+            <h1 class="text-[20px] text-center">Delete Listing</h1>
+            <p class="bg-yellow-300 p-2 rounded mb-3">Warning: This deletes all the data related to the listing.</p>
+            <p *ngIf="error.type === 'DELETE_LISTING_ERROR'" class="text-red-400">
+                {{error.message}}}
+            </p>
+            <p *ngIf="message.for === 'DELETE_LISTING'">
+                {{message.message}}
+            </p>
+            <select [(ngModel)]="selectedListingIdForDeletion" class="p-3 rounded">
+                <option value="">Please select the listing</option>
+                <option *ngFor="let listing of listings" [value]="listing.id">{{listing.title}}</option>
+            </select>
+            <button (click)="deleteListing()" [disabled]="!selectedListingIdForDeletion"
+                class="disabled:bg-violet-200  mt-2 p-3 rounded bg-blue-400">Delete Listing</button>
+        </div>
+        <div class="p-4 flex flex-col w-fit bg-slate-400 rounded">
+            <app-delete-product [listings]="listings"></app-delete-product>
+        </div>
+        <div class="p-4 flex flex-col w-fit bg-slate-400 rounded">
+
+        </div>
+    </div>
+
+    <div class="mt-10">
+        <select (change)="requestDataChange($event)" class="p-5 rounded">
+            <option>Select type of data you want to see</option>
+            <option value="users">Users</option>
+            <option value="listings">Listings</option>
+        </select>
+
+        <div class="mt-5">
+            <div *ngIf="type === 'users'">
+                <p *ngIf="error.type === 'GET_USERS_ERROR'" class="text-red-400">
+                    {{error.message}}
+                </p>
+                <table *ngIf="error.type !== 'GET_USERS_ERROR'">
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Id</th>
+                        <th>Is Superuser</th>
+                        <th>Created At</th>
+                        <th>Points</th>
+                    </tr>
+                    <tr *ngFor="let user of users">
+                        <th>{{user.username}}</th>
+                        <th>{{user.email}}</th>
+                        <th>{{user.id}}</th>
+                        <th>{{user.is_superuser}}</th>
+                        <th>{{user.created_at | date}} </th>
+                        <th>{{user.points}}</th>
+
+                    </tr>
+                </table>
+            </div>
+
+            <div *ngIf="type === 'listings'">
+                <p class="text-red-400" *ngIf="error.type === 'GET_LISTINGS_ERROR'">
+                    {{error.message}}
+                </p>
+                <table *ngIf="error.type !== 'GET_LISTINGS_ERROR'">
+                    <tr>
+                        <th>Title</th>
+                        <th>Id</th>
+                        <th>Created At</th>
+
+                        <th>Box Count</th>
+                    </tr>
+                    <tr *ngFor="let listing of listings">
+                        <th>{{listing.title}}</th>
+                        <th>{{listing.id}}</th>
+                        <th>{{listing.created_at | date}}</th>
+
+                        <th>{{listing.box_count}}</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

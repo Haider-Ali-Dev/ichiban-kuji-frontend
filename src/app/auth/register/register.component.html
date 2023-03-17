@@ -1,0 +1,61 @@
+<body class="bgc">
+    <div class="h-[100vh] w-[100%]">
+        <div class="flex justify-center flex-col h-[100vh] w-[100%]  content-center">
+            <div class="flex justify-center">
+
+                <form (ngSubmit)="register()" [formGroup]="formGroup" class="bg-white w-fit rounded p-5  border-2 border-white">
+                    <div class="flex gap-5 flex-col  ">
+                        <h1 class="text-center font-bold text-[30px]">Register</h1>
+                        <p>Fill out this form in order to buy products.</p>
+                        <div *ngIf="hasError">
+                            <p *ngClass="{hasError: 'bg-red-400' }" class="bg-blue-400 text-center p-4 rounded">
+
+                            </p>
+                        </div>
+                        
+
+                        <input [formControl]="name" placeholder="Username"
+                            class="w-[500px] inline bg-gray-200 p-3 border-2 rounded hover:border-b-2 hover:border-b-blue-500" />
+                        <div>
+                            <p class="text-red-400" *ngIf="name.errors && email.touched">
+                                <!-- Display Errors Messages -->
+                                <span *ngIf="name.errors?.['required']">Username is required</span>
+                                <span *ngIf="name.errors?.['minlength']">Username must be at least 3 characters</span>
+                                <span *ngIf="name.errors?.['maxlength']">Username must be less than 20 characters</span>
+
+                            </p>
+                        </div>
+                        <input [formControl]="email" type="email" placeholder="Email"
+                            class="bg-gray-200 rounded p-3 border-2 hover:border-b-2 hover:border-b-blue-500" />
+
+                        <div>
+                            <p class="text-red-400" *ngIf="email.errors && email.touched">
+                                <!-- Display Errors Messages -->
+                                <span *ngIf="email.errors?.['required']">Email is required</span>
+                                <span *ngIf="email.errors?.['email']">Email is not valid</span>
+                            </p>
+                        </div>
+
+                        <input [formControl]="password" type="password" placeholder="Password"
+                            class="bg-gray-200 rounded p-3 border-2 hover:border-b-2 hover:border-b-blue-500" />
+                        <div>
+                            <p class="text-red-400 w-[400px]" *ngIf="password.errors && email.touched">
+                                <!-- Display Errors Messages -->
+                                <span *ngIf="password.errors?.['required']">Password is required</span>
+                                <span *ngIf="password.errors?.['minlength']">Password must be at least 8
+                                    characters</span>
+                                <!--Regex-->
+                                <span class="" *ngIf="password.errors?.['pattern']">Password must contain at least one
+                                    uppercase letter, one lowercase letter, one number, and one special character</span>
+                               
+                            </p>
+                        </div>
+                        <button  type="submit" [disabled]="hasError || formGroup.invalid"
+                            class="disabled:bg-violet-400 bg-blue-700 p-4 rounded">Register</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>

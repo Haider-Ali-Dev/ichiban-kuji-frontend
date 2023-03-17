@@ -1,0 +1,41 @@
+<form [formGroup]="listingForm" class="p-4 flex flex-col w-fit bg-slate-400 rounded">
+    <div>
+        <div class="flex flex-col gap-4">
+            <h1>Product</h1>
+            <input [formControl]="title" class="p-3 rounded" placeholder="Title">
+            <textarea [formControl]="description" class="p-3 rounded" placeholder="Description"></textarea>
+            <input type="number" [formControl]="amount" class="p-3 rounded" placeholder="Amount">
+            <select [formControl]="level" class="p-3 rounded">
+                <option value="0"> Level A</option>
+                <option value="1"> Level B</option>
+                <option value="2"> Level C</option>
+                <option value="3"> Level D</option>
+                <option value="4"> Level E</option>
+                <option value="5"> Level F</option>
+                <option value="6"> Level G</option>
+                <option value="7"> Level H</option>
+                <option value="8"> Level I</option>
+                <option value="9"> Level J</option>
+                <option value="10"> Level K</option>
+                <option value="11"> Level L</option>
+                <option value="12"> Level M</option>
+                <option value="13"> Level N</option>
+                <option value="14"> Level O</option>
+                <option value="15"> Level P</option>
+                <option value="16"> Level Q</option>
+                <option value="17"> Level R</option>
+                <option value="18"> Level S</option>
+                <option value="19"> Level T</option>
+                <option value="20"> Level U</option>
+                <option value="21"> Level V</option>
+                <option value="22"> Level W</option>
+                <option value="23"> Level X</option>
+                <option value="24"> Level Y</option>
+                <option value="25"> Level Z</option>
+                <option value="26"> Last Level</option>
+            </select>
+        </div>
+        <button [disabled]="listingForm.invalid" (click)="addProduct()"
+            class="mt-2 p-3 disabled:bg-violet-200 rounded bg-blue-400">Add Product</button>
+    </div>
+</form>
