@@ -8,19 +8,21 @@ import { AdminService } from '../admin.service';
 })
 export class GenerateImageLinkComponent {
   imageLink = ""
+  isFileUploaded = false;
   fileForm = new FormData();
 
   constructor(private admin: AdminService) {}
 
   changeFile(event: any) {
     this.fileForm.append('file', event.target.files[0]);
+    this.isFileUploaded = true;
   
   }
 
   generateLink() {
     this.admin.generateImageLink(this.fileForm).subscribe((data: any) => {
       console.log(data)
-      this.imageLink = data;
+      this.imageLink = data.link;
     });
   }
 
