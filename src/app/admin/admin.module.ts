@@ -6,14 +6,22 @@ import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
 import { BoxFormComponent } from './box-form/box-form.component';
 import { DeleteProductComponent } from './delete-product/delete-product.component';
+import { DeleteBoxComponent } from './delete-box/delete-box.component';
+import { GenerateImageLinkComponent } from './generate-image-link/generate-image-link.component';
+import { AdminGuard } from './guards/admin';
 
 
 @NgModule({
+  providers: [
+    AdminGuard
+  ],
   declarations: [
     SigninComponent,
     HomeComponent,
     BoxFormComponent,
-    DeleteProductComponent
+    DeleteProductComponent,
+    DeleteBoxComponent,
+    GenerateImageLinkComponent,
   ],
   imports: [
     CommonModule,

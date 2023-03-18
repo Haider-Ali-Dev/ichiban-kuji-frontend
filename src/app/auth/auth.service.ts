@@ -30,7 +30,20 @@ export class AuthService {
   }
 
   loginThroughCookie() {
-    return this.http.get<User>('http://localhost:3000/auth/verify');
+    return this.http.get<User>('http://localhost:3000/auth/verify', {
+      withCredentials: true
+    });
   }
 
+  isAdmin() {
+    this.loginThroughCookie().subscribe((data) => {
+      this.user = data
+    })
+    console.log(this.user, "OTHER")
+    if (this.user.is_superuser) {
+      console.log('TRUE')
+      return true;
+    }
+    return false;
+  }
 }

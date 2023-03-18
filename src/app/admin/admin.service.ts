@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import User from '../models/user.model';
 import Listing from '../models/listing.model';
 import BoxData from '../models/box_data.model';
+import AddProduct from '../models/add-product.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -50,6 +51,25 @@ export class AdminService {
 
   deleteProduct(data: { id: string, req_id: { id: string } }) {
     return this.http.post('http://localhost:3000/admin/delete/product', data, {
+      withCredentials: true
+    })
+  }
+
+  deleteBox (data: { id: string, req_id: { id: string } }) {
+    return this.http.post('http://localhost:3000/admin/delete/box', data, {
+      withCredentials: true
+    })
+  }
+  
+
+  addProduct(data: AddProduct) {
+    return this.http.post('http://localhost:3000/admin/add/product', data, {
+      withCredentials: true
+    })
+  }
+
+  generateImageLink(fileForm: FormData) {
+    return this.http.post('http://localhost:3000/admin/generate/image_link', fileForm, {
       withCredentials: true
     })
   }

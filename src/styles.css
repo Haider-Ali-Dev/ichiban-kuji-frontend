@@ -8,6 +8,10 @@ body {
 
 }
 
+
+.st {
+    font-family: 'Bungee', cursive;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

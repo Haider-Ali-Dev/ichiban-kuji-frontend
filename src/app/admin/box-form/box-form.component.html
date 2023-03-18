@@ -3,6 +3,7 @@
         <div class="flex flex-col gap-4">
             <h1>Product</h1>
             <input [formControl]="title" class="p-3 rounded" placeholder="Title">
+            <input [formControl]="imageLink" class="p-3 rounded" placeholder="Image Link">
             <textarea [formControl]="description" class="p-3 rounded" placeholder="Description"></textarea>
             <input type="number" [formControl]="amount" class="p-3 rounded" placeholder="Amount">
             <select [formControl]="level" class="p-3 rounded">
@@ -37,5 +38,7 @@
         </div>
         <button [disabled]="listingForm.invalid" (click)="addProduct()"
             class="mt-2 p-3 disabled:bg-violet-200 rounded bg-blue-400">Add Product</button>
+        
+        
     </div>
 </form>

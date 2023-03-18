@@ -10,7 +10,7 @@ export class BoxFormComponent {
   @Input()
   listings: Array<Listing> = [];
   @Input()
-  productList: Array<{ title: string, description: string, level: number, amount: number }> = [];
+  productList: Array<{ title: string, description: string, level: number, amount: number, image: string }> = [];
   title = new FormControl('', [
     Validators.required
   ])
@@ -24,19 +24,25 @@ export class BoxFormComponent {
     Validators.required,
     Validators.min(1)
   ])
+  imageLink = new FormControl('',  [
+    Validators.required
+  ]);
   listingForm = new FormGroup({
     title: this.title,
     description: this.description,
     level: this.level,
-    amount: this.amount
+    amount: this.amount,
+    imageLink: this.imageLink
   })
+
 
   addProduct() {
     this.productList.push({
       title: this.title.value as string,
       description: this.description.value as string,
       level: Number(this.level.value),
-      amount: this.amount.value as number
+      amount: this.amount.value as number,
+      image: this.imageLink.value as string
     })
     this.listingForm.reset()
   }

@@ -1,4 +1,7 @@
 import { Component, } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
+import AddProduct from 'src/app/models/add-product.model';
+import Box from 'src/app/models/box.model';
 import Listing from 'src/app/models/listing.model';
 import User from 'src/app/models/user.model';
 import { AdminService } from '../admin.service';
@@ -8,7 +11,7 @@ import { AdminService } from '../admin.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService, private auth: AuthService) { }
   numberOfUsers = 0;
   users: User[] = [];
   listingForm = new FormData()
@@ -16,18 +19,23 @@ export class HomeComponent {
   fileIsUploaded = false;
   listings: Listing[] = []
   userDataAvailable = false;
-  message: {for: string, message: string} = {for: '', message: ''}
+  message: { for: string, message: string } = { for: '', message: '' }
   showMessage = false;
-  productList: Array<{ title: string, description: string, level: number, amount: number }> = [];
+  productList: Array<{ title: string, description: string, level: number, amount: number, image: string }> = [];
   boxPrice = 0;
   listingId = ""
   type = ""
   selectedListingIdForDeletion = ""
   usersOnMonths = new Array(12).fill(0);
   status: boolean = true
+  
   error: { type: string, message: string } = { type: '', message: '' };
-  public chart: any;
-
+  addProductList:  Array<{ title: string, description: string, level: number, amount: number, image: string }> = [];
+  // For product creation
+  selectedBoxIdForProductCreation = ""
+  selectedListingIdForProductCreation = ""
+  selectedBox: Array<Box> =  []
+  
 
   ngOnInit(): void {
     this.getAllListings();
@@ -96,7 +104,7 @@ export class HomeComponent {
       return;
     }
     this.listingForm.append('title', this.listingtitle);
-    this.listingForm.append('req_id', '299b126e-a1c1-437f-b51e-a18fb633204a')
+    this.listingForm.append('req_id', this.auth.user.id)
     this.adminService.uploadFile(this.listingForm).subscribe((res: any) => {
       this.listings = res;
       this.listingtitle = ''
@@ -118,7 +126,7 @@ export class HomeComponent {
       },
       req_id: {
         // Test req_id
-        id: '299b126e-a1c1-437f-b51e-a18fb633204a'
+        id: this.auth.user.id
       }
     }).subscribe((res: any) => {
       this.listings = res;
@@ -148,7 +156,7 @@ export class HomeComponent {
   deleteListing() {
     this.adminService.deleteListing({
       req_id: {
-        id: '299b126e-a1c1-437f-b51e-a18fb633204a'
+        id: this.auth.user.id
       },
       listing_id: this.selectedListingIdForDeletion
     }).subscribe((res: any) => {
@@ -159,6 +167,35 @@ export class HomeComponent {
     }, (err) => {
       this.error.type = "DELETE_LISTING_ERROR";
       this.error.message = "There was an error deleting the listing. Please try again later."
+    })
+  }
+
+  createProducts() {
+    this.adminService.addProduct ({
+      req_id: {
+        id: this.auth.user.id
+      },
+      product_data: this.addProductList,
+      box_id: this.selectedBoxIdForProductCreation
+    }).subscribe((res: any) => {
+      this.listings = res;
+      this.addProductList = []
+      this.message.for = "CREATE_PRODUCTS"
+      this.message.message = "Products created successfully"
+    })
+
+  }
+
+  setBoxId(e: any) {
+    this.selectedBoxIdForProductCreation = e.target.value
+  }
+
+  setListingId(e: any) {
+    this.selectedListingIdForProductCreation = e.target.value
+    this.listings.map((l) => {
+      if (l.id === this.selectedListingIdForProductCreation) {
+        this.selectedBox = l.boxes
+      }
     })
   }
 

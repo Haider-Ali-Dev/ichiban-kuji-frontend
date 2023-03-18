@@ -1,0 +1,29 @@
+<div class="flex flex-col gap-5">
+    <h1 class="text-center text-[20px]">
+        Delete Box
+    </h1>
+    <select class="p-3 rounded w-[350px] " (change)="handleChangeListing($event)">
+        <option value="">
+            Select the listing
+        </option>
+        <option *ngFor="let listing of listings" [value]="listing.id">
+            {{listing.title}}
+        </option>
+
+    </select>
+
+    <select *ngIf="selectedListingIdForDeletion.length" class="p-3 rounded w-[350px]" [(ngModel)]="selecteBoxIdForDeletion">
+        <option value="">
+            Select the box
+        </option>
+        <option *ngFor="let box of selectedBox" [value]="box.id">
+            {{box.id}}
+        </option>
+
+    </select>
+
+    <button *ngIf="selecteBoxIdForDeletion.length" (click)="deleteBox()">
+        Delete Box
+    </button>
+
+</div>
