@@ -57,6 +57,15 @@
                 {{message.message}}
             </p>
             <input (change)="setTitle($event)" class="p-3" placeholder="Title">
+            <select [(ngModel)]="listingType"  class="p-3 rounded mt-2">
+                <option value="">Please select the category</option>
+                <option value="HEX">
+                    Hexapus
+                </option>
+                <option value="ICH">
+                    Ichibankuji
+                </option>
+            </select>
             <input (change)="setFile($event)" type="File">
             <button [disabled]="!fileIsUploaded || !this.listingtitle"
                 class="disabled:bg-violet-200 mt-2 p-3 rounded bg-blue-400" (click)="uploadFile()">Create</button>

@@ -2,10 +2,10 @@
 /* Border around all elements */
 
 body {
-   
-    background-color: white;
+    height: 100vh;
+    background-color: #D4F1F4;
     font-family: 'Plus Jakarta Sans', sans-serif;
-
+    position: relative;
 }
 
 

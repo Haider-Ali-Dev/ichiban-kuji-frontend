@@ -8,6 +8,7 @@ interface Listing {
     title: string;
     created_at: string;
     box_count: number;
+    tty: string;
 }
 
 export default Listing;

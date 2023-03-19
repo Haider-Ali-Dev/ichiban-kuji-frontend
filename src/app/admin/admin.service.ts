@@ -14,7 +14,6 @@ export class AdminService {
   createBox(box_data: BoxData) {
     return this.http.post('http://localhost:3000/admin/create/box', box_data, {
       withCredentials: true,
-
     })
   }
   getAllUsers() {

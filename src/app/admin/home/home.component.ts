@@ -16,6 +16,7 @@ export class HomeComponent {
   users: User[] = [];
   listingForm = new FormData()
   listingtitle = ''
+  listingType = ''
   fileIsUploaded = false;
   listings: Listing[] = []
   userDataAvailable = false;
@@ -28,14 +29,14 @@ export class HomeComponent {
   selectedListingIdForDeletion = ""
   usersOnMonths = new Array(12).fill(0);
   status: boolean = true
-  
+
   error: { type: string, message: string } = { type: '', message: '' };
-  addProductList:  Array<{ title: string, description: string, level: number, amount: number, image: string }> = [];
+  addProductList: Array<{ title: string, description: string, level: number, amount: number, image: string }> = [];
   // For product creation
   selectedBoxIdForProductCreation = ""
   selectedListingIdForProductCreation = ""
-  selectedBox: Array<Box> =  []
-  
+  selectedBox: Array<Box> = []
+
 
   ngOnInit(): void {
     this.getAllListings();
@@ -103,17 +104,20 @@ export class HomeComponent {
       this.message.message = "Please upload a file for the listing"
       return;
     }
+    this.listingForm.append('tty', this.listingType);
     this.listingForm.append('title', this.listingtitle);
-    this.listingForm.append('req_id', this.auth.user.id)
+    this.listingForm.append('req_id', this.auth.user.id);
     this.adminService.uploadFile(this.listingForm).subscribe((res: any) => {
       this.listings = res;
       this.listingtitle = ''
+      this.listingForm = new FormData()
+      this.listingType = ''
       this.message.for = "LISTING_CREATION"
       this.message.message = "Listing created successfully"
     }, (err) => {
       this.error.type = "LISTING_CREATION_ERROR";
       this.error.message = "There was an error uploading the file. Please try again later."
-    })
+    });
   }
 
   createBox() {
@@ -129,6 +133,7 @@ export class HomeComponent {
         id: this.auth.user.id
       }
     }).subscribe((res: any) => {
+      console.log(res);
       this.listings = res;
       this.boxPrice = 0
       this.listingId = ""
@@ -171,7 +176,7 @@ export class HomeComponent {
   }
 
   createProducts() {
-    this.adminService.addProduct ({
+    this.adminService.addProduct({
       req_id: {
         id: this.auth.user.id
       },

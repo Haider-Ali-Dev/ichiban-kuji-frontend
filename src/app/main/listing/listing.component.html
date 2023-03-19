@@ -1,0 +1,30 @@
+<div>
+
+    <div class="grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-[50px]">
+        <div *ngFor="let listing of listings">
+            <div *ngIf="listing.box_count">
+                <div>
+                    <img [alt]="listing.title" [src]="listing.image" />
+                </div>
+                <p class="hover:text-blue-400 hover:cursor-pointer">
+                    {{listing.title}}
+                </p>
+                <div class="flex justify-between">
+                    <div class="flex justify-between">
+                        <span class="material-icons">
+                            paid
+                        </span>
+                        <p>
+                            {{calculateAverageCostOfBox(listing.id)}}
+                        </p>
+                    </div>
+
+                    <p>
+                        {{listing.box_count}}/{{listing.box_count}}
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

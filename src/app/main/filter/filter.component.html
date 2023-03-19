@@ -1,0 +1,77 @@
+<div class="flex sm:flex-row sm:flex-wrap flex-col gap-10">
+    <div>
+        <select class="w-[250px] p-2 rounded bg-white border-2">
+            <option value="">
+                Sort By
+            </option>
+            <option value="HTL">
+                Highest to Lowest
+            </option>
+            <option value="LTH">
+                Lowest to Highest
+            </option>
+
+        </select>
+    </div>
+
+    <div class="border-2 rounded w-fit">
+        <div class="w-[250px] bg-gray-200 p-3 flex justify-between">
+            <h1 class="font-bold">
+                Price
+            </h1>
+            <p class="cursor-pointer">
+                <span class="material-icons">
+                    restart_alt
+                </span>
+            </p>
+        </div>
+        <div>
+            <input type="number" class="w-[125px] p-2 rounded bg-white border-2" placeholder="Min">
+            <input type="number" class="w-[125px] p-2 rounded bg-white border-2" placeholder="Max">
+        </div>
+    </div>
+
+    <div class="border-2 rounded w-fit sm:hidden">
+        <div class="w-[250px] bg-gray-200 p-3 flex justify-between">
+            <h1 class="font-bold">
+                Series Name
+            </h1>
+            <p class="cursor-pointer">
+                <span class="material-icons">
+                    restart_alt
+                </span>
+            </p>
+        </div>
+        <div class="p-2 bg-white">
+            <div *ngFor="let listing of listings">
+                <input [id]="listing.id" type="checkbox" [value]="listing.id">
+                <label [for]="listing.id" class="cursor-pointer">
+                    {{listing.title}}
+                </label>
+            </div>
+
+        </div>
+    </div>
+    <div class="border-2 rounded w-fit hidden sm:block">
+        <div class="w-[250px] bg-gray-200 p-3 flex justify-between">
+            <h1 class="font-bold">
+                Series Name
+            </h1>
+            <p class="cursor-pointer">
+                <span class="material-icons">
+                    restart_alt
+                </span>
+            </p>
+        </div>
+        <div>
+            <select class="w-[250px] p-3 bg-white">
+                <option>
+                    Please select the category
+                </option>
+                <option *ngFor="let listing of listings">
+                    {{listing.title}}
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
