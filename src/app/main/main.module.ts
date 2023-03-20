@@ -7,6 +7,9 @@ import { IchibanHomeComponent } from './ichiban-home/ichiban-home.component';
 import { HexaHomeComponent } from './hexa-home/hexa-home.component';
 import { FilterComponent } from './filter/filter.component';
 import { ListingComponent } from './listing/listing.component';
+import { SharedModule } from '../shared/shared.module';
+import { ViewListingComponent } from './view-listing/view-listing.component';
+import { BuyPointsComponent } from './buy-points/buy-points.component';
 
 
 @NgModule({
@@ -15,11 +18,14 @@ import { ListingComponent } from './listing/listing.component';
     IchibanHomeComponent,
     HexaHomeComponent,
     FilterComponent,
-    ListingComponent
+    ListingComponent,
+    ViewListingComponent,
+    BuyPointsComponent
   ],
   imports: [
     CommonModule,
-    MainRoutingModule
+    MainRoutingModule,
+    SharedModule
   ]
 })
 export class MainModule { }

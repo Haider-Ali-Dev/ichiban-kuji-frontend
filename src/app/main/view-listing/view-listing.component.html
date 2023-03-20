@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<div>
+    <div class="flex gap-5 justify-center mt-5">
+        <div>
+            <img class="h-[400px] " [alt]="listing?.title" [src]="listing?.image">
+        </div>
+        <div class="flex flex-col">
+            <div class="mb-4">
+                <p class="text-[35px] font-bold">
+                    {{listing?.title}}
+                </p>
+            </div>
+
+            <div class="flex justify-between w-2">
+                <p class="flex justify-center flex-col content-center">
+                    <i class="material-icons text-[28px]">
+                        paid</i>
+                </p>
+                <p class="text-[30px]">
+                    {{calculateAverageCostOfBox()}}
+                </p>
+
+            </div>
+
+            <div class="flex justify-center gap-5 p-5 border-2 bg-[#D4F1F4] w-[300px]">
+                <button (click)="changeBoxIndex()" class="border-2 p-3 justify-between bg-white w-10">
+                    < </button>
+
+                        <p class="flex justify-center flex-col content-center w-[] ">
+                            Box {{boxChoosenIndex}} of {{listing?.box_count}}
+                        </p>
+
+                        <button (click)="changeBoxIndex()" class="border-2 p-3 justify-between bg-white w-10">
+                            >
+                        </button>
+
+
+
+            </div>
+            <button class="w-[350x] text-center">
+                Buy
+            </button>
+        </div>
+
+
+
+    </div>
+</div>

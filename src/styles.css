@@ -3,11 +3,11 @@
 
 body {
     height: 100vh;
-    background-color: #D4F1F4;
+    background-color: white;
     font-family: 'Plus Jakarta Sans', sans-serif;
     position: relative;
 }
-
+/* D4F1F4 */
 
 .st {
     font-family: 'Bungee', cursive;

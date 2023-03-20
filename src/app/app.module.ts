@@ -9,7 +9,7 @@ import { AdminModule } from './admin/admin.module';
 import { MainModule } from './main/main.module';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

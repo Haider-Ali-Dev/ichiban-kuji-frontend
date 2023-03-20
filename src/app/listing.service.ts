@@ -26,4 +26,10 @@ export class ListingService {
       withCredentials: true
     })
   }
+
+  getListingById(id: string) {
+    return this.http.post<Listing>(`http://localhost:3000/get/listing`, { id }, {
+      withCredentials: true
+    })
+  }
 }
