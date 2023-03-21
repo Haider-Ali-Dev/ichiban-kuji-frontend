@@ -5,7 +5,9 @@ interface User {
     created_at: string,
     is_superuser: boolean,
     owned_products: string[],
-    points: number
+    points: number,
+    address: string,
+    orders: []
 }
 
 

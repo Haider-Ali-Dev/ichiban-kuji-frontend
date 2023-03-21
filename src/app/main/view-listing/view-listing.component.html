@@ -3,7 +3,7 @@
 <div *ngIf="this.listing" class="p-5">
     <div class="flex gap-5 flex-wrap justify-center mt-5">
         <div>
-            <img class="h-[400px] sm:h-[150px] md:h-[250px] rounded" [alt]="listing.title" [src]="listing.image">
+            <img class="h-[400px] sm:h-[200px] md:h-[250px] rounded" [alt]="listing.title" [src]="listing.image">
         </div>
         <div class="flex flex-col gap-5">
             <div class="mb-4">
@@ -50,7 +50,7 @@
     </div>
 
     <div class="">
-        <h1 class="text-center text-[40px] ft">ShowCase</h1>
+        <h1 class="text-center text-[40px] st">ShowCase</h1>
         <div class="flex justify-center">
             <div class="grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
                 <div *ngFor="let product of listing.boxes[boxChoosenIndex - 1].products">

@@ -1,7 +1,7 @@
-<div class="rounded border-2 w-fit p-5 mt-10 bg-blue-200" *ngIf="product">
+<div class="rounded border-2 w-[350px] h-auto p-5 mt-10 bg-blue-200" *ngIf="product">
 
     <div class="">
-        <img class="h-[200px] w-[250px]  md:h-[250px] rounded" [alt]="product.title" [src]="generateLink()">
+        <img class="w-auto h-auto  rounded" [alt]="product.title" [src]="generateLink()">
     </div>
     <div class="mt-5">
         <p class="text-center text-[25px]">
@@ -14,7 +14,7 @@
         </p>
     </div>
     <div>
-        <h1 class="text-[30px]">
+        <h1 class="text-[30px] st">
             <span class="text-[35px]">
                 Level
             </span> {{transformLevel(product.level)}}

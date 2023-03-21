@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-buy-points',
   templateUrl: './buy-points.component.html',
   styleUrls: ['./buy-points.component.css']
 })
 export class BuyPointsComponent {
+  
   cardNumber = new FormControl('', [Validators.required]);
   cardExpiryMonth = new FormControl('', [Validators.required]);
   cardExpiryYear = new FormControl('', [Validators.required]);
@@ -19,11 +21,18 @@ export class BuyPointsComponent {
     cardName: this.cardName
   });
 
+  tty = ''
+  showMessage = false;
+  message = '';
+
 
   
-  constructor() { }
-
+  constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.tty = params['id'];
+    });
+  }
   pay() {
-   
+    
   }
 }

@@ -1,0 +1,16 @@
+<div class="">
+    <div *ngIf="!bought" class="">
+        <button (click)="buy()">Buy</button>
+    </div>
+    <div *ngIf="!bought">
+        <div>
+            <img [alt]="this.product.title" [src]="generateLink()"/>
+        </div>
+        <div>
+            <p>
+                {{product.title}}
+            </p>
+        </div>
+    </div>
+</div>
+

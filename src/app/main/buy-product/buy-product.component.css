@@ -1,0 +1,96 @@
+.card {
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    padding: 20px;
+    position: relative;
+    width: 300px;
+  }
+  
+  .card:before {
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+  }
+  
+  .card img {
+    border-radius: 5px;
+    display: block;
+    height: 150px;
+    margin: 0 auto;
+    object-fit: cover;
+    width: 150px;
+    z-index: 2;
+  }
+  
+  .card-body {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .card-title {
+    color: #fff;
+    font-size: 24px;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .card-text {
+    color: #fff;
+    font-size: 16px;
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  .btn {
+    background-color: #ff0000;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    z-index: 2;
+  }
+  
+  .btn:hover {
+    background-color: #a80000;
+    cursor: pointer;
+  }
+  
+  .spinner {
+    animation: spin 1s linear infinite;
+    border: 10px solid #fff;
+    border-top-color: #ff0000;
+    border-radius: 50%;
+    height: 100px;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    z-index: 2;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

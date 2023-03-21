@@ -32,4 +32,14 @@ export class ListingService {
       withCredentials: true
     })
   }
+
+  buyBox(reqId: string, boxId: string) {
+
+    return this.http.post('http://localhost:3000/buy/box', {
+      req_id: {id: reqId},
+      id:  boxId
+    }, {
+      withCredentials: true
+    })
+  }
 }

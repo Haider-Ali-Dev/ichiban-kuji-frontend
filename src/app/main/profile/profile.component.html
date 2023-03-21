@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<div>
+    <div class="bg-purple-800 flex justify-between p-10">
+        <h1 class="text-[30px] font-bold text-white">Welcome, {{auth.user.username}}</h1>
+        <button class="bg-transparent rounded border-2 p-2 text-white font-bold border-white ">
+            Log out
+        </button>
+    </div>
+    <div class="flex gap-5 justify-center">
+        <div class="w-[200px]">
+            <ul class="">
+                <li (click)="changeTab($event, 'Profile')" [ngClass]="{
+                    'border-black': selectedTab === 'Profile'
+                }" class="p-5 cursor-pointer bg-gray-200 text-center border-2 border-gray-300">
+                    Profile
+                </li>
+                <li (click)="changeTab($event, 'Orders')" [ngClass]="
+                {
+                    'border-black': selectedTab === 'Orders'}
+                " class="p-5 cursor-pointer bg-gray-200 text-center border-2 border-gray-300">
+                    Orders
+                </li>
+
+            </ul>
+
+        </div>
+        <div *ngIf="selectedTab === 'Profile' " class="p-5 text-[20px] sm:[250px] w-[500px] ">
+            <h1 class="text-[25px] font-bold">Profile</h1>
+            <div>
+                <p>
+                    Email: {{auth.user.email}}
+                </p>
+                <p>
+                    Coins: {{auth.user.points}}
+                </p>
+                <p>
+                    Created account on: {{auth.user.created_at | date: 'dd/MM/yyyy'}}
+                </p>
+            </div>
+
+        </div>
+
+        <div *ngIf="selectedTab === 'Orders' " class="p-5 text-[20px] sm:[250px] w-[500px] ">
+            <h1 class="text-[25px] font-bold">Orders</h1>
+            <div *ngFor="let id of auth.user.orders">
+                {{id['status']}} - {{id['id']}}
+            </div>
+
+        </div>
+    </div>
+
+</div>

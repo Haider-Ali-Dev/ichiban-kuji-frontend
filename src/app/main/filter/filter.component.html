@@ -1,6 +1,6 @@
 <div class="flex sm:flex-row sm:flex-wrap flex-col gap-10">
     <div>
-        <select class="w-[250px] p-2 rounded bg-white border-2">
+        <select (change)="sortBy($event)" class="w-[250px] p-2 rounded bg-white border-2">
             <option value="">
                 Sort By
             </option>
@@ -9,6 +9,10 @@
             </option>
             <option value="LTH">
                 Lowest to Highest
+            </option>
+
+            <option value="ALPHA">
+                Alphabetical Order
             </option>
 
         </select>

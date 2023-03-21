@@ -12,7 +12,9 @@ export class AuthService {
     created_at: '',
     is_superuser: false,
     owned_products: [],
-    points: 0
+    points: 0,
+    orders: [],
+    address: ''
   }
   constructor(private http: HttpClient) { }
 

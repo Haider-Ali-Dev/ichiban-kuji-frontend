@@ -17,6 +17,7 @@ export class ViewListingComponent implements OnInit {
   boxChoosen: Box | undefined;
   showMessage: boolean = false;
   message: string = '';
+  addressError = false;
   constructor(private router: Router,
     private route: ActivatedRoute,
     private listingService: ListingService,
@@ -43,12 +44,24 @@ export class ViewListingComponent implements OnInit {
 
 
   buyBox() {
-    // CHeck for insufficient points
+    
     if (this.authService.user?.points < (this.listing as Listing).boxes[this.boxChoosenIndex - 1].price) {
       this.showMessage = true;
       this.message = "Insufficient points";
       return;
     }
+
+    // if (!this.authService.user?.address) {
+    //   this.addressError = true;
+    //   return;
+    // }
+
+    this.router.navigate(['', 'buy', 'product', 'open'], {
+      queryParams: {
+        listingId: this.listingId,
+        boxId: (this.listing as Listing).boxes[this.boxChoosenIndex - 1].id
+      }
+    });
 
 
   }
