@@ -1,0 +1,51 @@
+<div class="w-[400px] sm:w-[325px] ">
+    <div *ngIf="type === 'gold'" class="glow-border-gold h-[420px] sm:h-auto text-[#483c32] p-5">
+        <h1 class="text-center st text-[50px] ">Gold</h1>
+        <p class="text-center st text-[30px]">
+            ${{price}} for {{points}} points
+        </p>
+        <p class="font-bold">
+            Gold package offers a significant amount of points to play games with, giving you more opportunities to win
+            real anime figures. With the Gold package, you'll have an edge over the competition and be able to
+            participate in more games for a chance to win big.
+        </p>
+
+        <div class="flex justify-center text-[25px] mt-[44.4px] bg-blue-400">
+            <button class=" p-3 rounded text-white">Buy</button>
+        </div>
+    </div>
+
+    <div *ngIf="type === 'silver'" class="glow-border-silver h-[420px] sm:h-auto text-[#483c32] p-5">
+        <h1 class="text-center st text-[50px] ">Silver</h1>
+        <p class="text-center st text-[30px]">
+            ${{price}} for {{points}} points
+        </p>
+        <p class="font-bold">
+            Silver package provides a moderate amount of points to play games with, making it a great option for those
+            looking to try their luck without breaking the bank. With the Silver package, you can enjoy playing games
+            with enough points to have a decent chance of winning a real anime figure.
+        </p>
+
+        <div class="flex justify-center text-[25px] bg-blue-400 mt-5">
+            <button class=" p-3 rounded text-white">Buy</button>
+        </div>
+    </div>
+
+    <div *ngIf="type === 'bronze'" class="glow-border-bronze sm:h-auto h-[420px] text-[#483c32] p-5">
+        <h1 class="text-center st text-[50px] ">Bronze</h1>
+        <p class="text-center st text-[30px]">
+            ${{price}} for {{points}} points
+        </p>
+        <p class="font-bold">
+            Bronze package offers a smaller amount of points to play games with, making it a good choice for those who
+            want to try out the games without spending too much. Even with a smaller number of points, the Bronze
+            package still provides a chance to win real anime figures and have fun playing games.
+        </p>
+
+        <div class="flex justify-center text-[25px] bg-blue-400 mt-5">
+            <button class=" p-3 rounded text-white">Buy</button>
+        </div>
+
+
+    </div>
+</div>

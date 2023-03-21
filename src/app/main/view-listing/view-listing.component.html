@@ -1,13 +1,14 @@
 <app-navbar></app-navbar>
-<div>
-    <div class="flex gap-5 justify-center mt-5">
+
+<div *ngIf="this.listing" class="p-5">
+    <div class="flex gap-5 flex-wrap justify-center mt-5">
         <div>
-            <img class="h-[400px] " [alt]="listing?.title" [src]="listing?.image">
+            <img class="h-[400px] sm:h-[150px] md:h-[250px] rounded" [alt]="listing.title" [src]="listing.image">
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col gap-5">
             <div class="mb-4">
                 <p class="text-[35px] font-bold">
-                    {{listing?.title}}
+                    {{listing.title}}
                 </p>
             </div>
 
@@ -27,7 +28,7 @@
                     < </button>
 
                         <p class="flex justify-center flex-col content-center w-[] ">
-                            Box {{boxChoosenIndex}} of {{listing?.box_count}}
+                            Box {{boxChoosenIndex}} of {{listing.box_count}}
                         </p>
 
                         <button (click)="changeBoxIndex()" class="border-2 p-3 justify-between bg-white w-10">
@@ -37,12 +38,26 @@
 
 
             </div>
-            <button class="w-[350x] text-center">
+            <p class="text-center p-2 rounded bg-red-400 text-white font-bold" *ngIf="showMessage">
+                {{message}} - <a [routerLink]="['', 'buy', 'points']" class="text-blue-400">
+                    Buy Coins
+                </a>
+            </p>
+            <button (click)="buyBox()" class="w-[350x] text-center p-5 bg-blue-400">
                 Buy
             </button>
         </div>
+    </div>
 
-
+    <div class="">
+        <h1 class="text-center text-[40px] ft">ShowCase</h1>
+        <div class="flex justify-center">
+            <div class="grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+                <div *ngFor="let product of listing.boxes[boxChoosenIndex - 1].products">
+                    <app-product-card [product]="product"></app-product-card>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

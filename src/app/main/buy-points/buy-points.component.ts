@@ -1,21 +1,29 @@
 import { Component } from '@angular/core';
-import * as Stripe from 'stripe';
-
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-buy-points',
   templateUrl: './buy-points.component.html',
   styleUrls: ['./buy-points.component.css']
 })
 export class BuyPointsComponent {
-  stripe = new Stripe.Stripe('pk_test_51MnMMQHAQt6zxcWxfUuTHuGB7ucuoxUeF1RQmgONgu6zDZ1EYtuBXqLFTijczKany8KKLn5w3FmuoarblkhM13J4003v5pX7iC',
-    {
-      apiVersion: '2022-11-15'
-    });
+  cardNumber = new FormControl('', [Validators.required]);
+  cardExpiryMonth = new FormControl('', [Validators.required]);
+  cardExpiryYear = new FormControl('', [Validators.required]);
+  cardCvc = new FormControl('', [Validators.required]);
+  cardName = new FormControl('', [Validators.required]);
+  cardFormGroup = new FormGroup({
+    cardNumber: this.cardNumber,
+    cardExpiryMonth: this.cardExpiryMonth,
+    cardExpiryYear: this.cardExpiryYear,
+    cardCvc: this.cardCvc,
+    cardName: this.cardName
+  });
+
 
   
   constructor() { }
 
   pay() {
-    this.stripe.o
+   
   }
 }

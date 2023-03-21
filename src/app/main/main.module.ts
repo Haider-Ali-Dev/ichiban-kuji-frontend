@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { MainRoutingModule } from './main-routing.module';
 import { HomeComponent } from './home/home.component';
 import { IchibanHomeComponent } from './ichiban-home/ichiban-home.component';
@@ -10,6 +10,9 @@ import { ListingComponent } from './listing/listing.component';
 import { SharedModule } from '../shared/shared.module';
 import { ViewListingComponent } from './view-listing/view-listing.component';
 import { BuyPointsComponent } from './buy-points/buy-points.component';
+import { BuyPointsViewComponent } from './buy-points-view/buy-points-view.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { BuyPointsCardComponent } from './buy-points-card/buy-points-card.component';
 
 
 @NgModule({
@@ -20,12 +23,16 @@ import { BuyPointsComponent } from './buy-points/buy-points.component';
     FilterComponent,
     ListingComponent,
     ViewListingComponent,
-    BuyPointsComponent
+    BuyPointsComponent,
+    BuyPointsViewComponent,
+    ProductCardComponent,
+    BuyPointsCardComponent
   ],
   imports: [
     CommonModule,
     MainRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class MainModule { }

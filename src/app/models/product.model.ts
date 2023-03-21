@@ -7,6 +7,7 @@ interface Product {
     status: boolean;
     created_at: string;
     amount: number;
+    image: string;
     available: number;
 }
 

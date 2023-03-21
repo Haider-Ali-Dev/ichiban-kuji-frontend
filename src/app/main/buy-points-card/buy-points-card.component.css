@@ -1,0 +1,67 @@
+.glow-border-gold {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background: linear-gradient(to right, #ffd700, #cdaa7d, #ffd700);
+    background-size: 200% 200%;
+    animation: glowing-gold 2s linear infinite;
+}
+
+@keyframes glowing-gold {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+.glow-border-bronze {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background: linear-gradient(to right, #cd7f32, #a97142, #cd7f32);
+    background-size: 200% 200%;
+    animation: glowing-bronze 2s linear infinite;
+}
+
+@keyframes glowing-bronze {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+.glow-border-silver {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background: linear-gradient(to right, #c0c0c0, #757575, #c0c0c0);
+    background-size: 200% 200%;
+    animation: glowing-silver 2s linear infinite;
+}
+
+@keyframes glowing-silver {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
