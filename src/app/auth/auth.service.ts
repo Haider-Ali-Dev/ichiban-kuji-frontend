@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import User from '../models/user.model';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +17,30 @@ export class AuthService {
     orders: [],
     address: ''
   }
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
+
+
+  logout() {
+    this.user = {
+      id: '',
+      email: '',
+      username: '',
+      created_at: '',
+      is_superuser: false,
+      owned_products: [],
+      points: 0,
+      orders: [],
+      address: ''
+    }
+
+    this.http.get('http://localhost:3000/auth/logout', {
+      withCredentials: true
+    }).subscribe((data) => {
+      if (data) {
+        this.router.navigate(['/'])
+      }
+    });
+  }
 
   login(email: string, password: string) {
     return this.http.post<User>('http://localhost:3000/auth/signin', { email, password }, {

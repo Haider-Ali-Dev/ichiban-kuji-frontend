@@ -17,6 +17,8 @@ export class ViewListingComponent implements OnInit {
   boxChoosen: Box | undefined;
   showMessage: boolean = false;
   message: string = '';
+  content = 'attention'
+  openModel = true
   addressError = false;
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -40,6 +42,11 @@ export class ViewListingComponent implements OnInit {
     })
 
 
+  }
+  setModel() {
+    console.log('HIT')
+    this.openModel = !this.openModel;
+    this.content = 'how_to_play'
   }
 
 

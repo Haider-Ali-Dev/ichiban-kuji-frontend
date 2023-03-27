@@ -1,0 +1,58 @@
+<div *ngIf="openModel"
+    class="fixed flex justify-center  flex-col content-center top-0 z-[1] w-[100%] h-[100%] bg-[rgba(0,0,0,0.4)] ">
+    <div class=" flex justify-center  h-fit p-5">
+        <div class="w-[600px] p-5 bg-white">
+            <div (click)="controlModel()">
+                <p class="text-right">X</p>
+            </div>
+            <div *ngIf="content === 'attention'">
+                <h1 class="text-center font-bold text-[20px]">
+                    ATTENTION: Please Read Carefully Before Proceeding
+                </h1>
+                <div>
+                    You are about to enter the Official Bandai Licensed IchibanKuji / Hexakuji online “Loot-Box Game”.
+                    While everyone is guaranteed to win a prize, it is important to play responsibly. Please note that
+                    your playing money is non-refundable.<br>
+
+                    We encourage you to have fun, but please do so sensibly. Make sure you are fully aware of the risks
+                    before purchasing/playing.<br>
+
+                    By continuing to purchase/play, you acknowledge that you are aware of the non-refundable nature of
+                    your purchase and take full responsibility for your actions.<br>
+
+                    Free shipping only applies to Contiguous US address. For NON-US addresses, you are responsible for
+                    all the shipping charges. Please contact our customer service for details.
+
+                    If you have any concerns or questions, please reach out to us before proceeding with IchibanKuji /
+                    Hexakuji Game. Happy Kuji-ing!<br>
+                </div>
+            </div>
+
+            <div *ngIf="content === 'how_to_play'" class="">
+                <h1 class="text-center font-bold text-[20px]">
+                    Purchase guidelines
+                </h1>
+                <p>
+                    1. To purchase, you can click on the Kuji page and select the Kuji you want to buy. Note that
+                    products are dispensed, randomly.<br>
+
+                    2. If not satisfied with the current remaining prizes of the Kuji, you can click "Choose Box" to
+                    another box of Kuji.<br>
+
+                    3. You can choose to buy "One Ticket", "Three Tickets ", "Five Tickets", or “All Tickets” in one
+                    set.<br>
+
+                    4. The customer who purchases the remaining tickets of a set will receive an additional "Last One
+                    Level Prize." The purchased prizes will be stored in the customer's “Shelf” page.<br>
+                </p>
+                <h1 class="text-center font-bold text-[20px]">
+                    Special note </h1>
+                <p>
+                    Please be aware that Ichiban Kuji are non-returnable items.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</div>

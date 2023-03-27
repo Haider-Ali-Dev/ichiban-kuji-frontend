@@ -7,9 +7,10 @@ import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { AdminModule } from './admin/admin.module';
 import { MainModule } from './main/main.module';
+import { ErrorModule } from './error/error.module';
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -17,7 +18,8 @@ import { MainModule } from './main/main.module';
     AuthModule,
     SharedModule,
     AdminModule,
-    MainModule
+    MainModule,
+    ErrorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

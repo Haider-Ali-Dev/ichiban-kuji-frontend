@@ -7,6 +7,7 @@ import { BuyPointsComponent } from './buy-points/buy-points.component';
 import { BuyPointsViewComponent } from './buy-points-view/buy-points-view.component';
 import { BuyProductComponent } from './buy-product/buy-product.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from '../auth/guards/auth-guard';
 const routes: Routes = [
   {
     path: '',
@@ -22,7 +23,8 @@ const routes: Routes = [
   },
   {
     path: 'payment/points/:id',
-    component: BuyPointsComponent
+    component: BuyPointsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'buy/points',
@@ -30,11 +32,14 @@ const routes: Routes = [
   },
   {
     path: 'buy/product/open',
-    component: BuyProductComponent
+    component: BuyProductComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'user/profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

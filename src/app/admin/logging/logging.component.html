@@ -1,0 +1,8 @@
+<h2 class="text-center text-[40px]">Logs</h2>
+<ul class="text-[20px]">
+    <li *ngFor="let log of logs">
+        {{ log.created_at }} - {{ log.action }} - By <span class="text-red-400 font-bold">
+            {{log.user_id}}
+        </span>
+    </li>
+</ul>

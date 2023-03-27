@@ -9,6 +9,7 @@ interface Product {
     amount: number;
     image: string;
     available: number;
+    ini_amount: number;
 }
 
 export default Product;

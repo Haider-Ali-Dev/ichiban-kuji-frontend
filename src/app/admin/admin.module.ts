@@ -9,7 +9,7 @@ import { DeleteProductComponent } from './delete-product/delete-product.componen
 import { DeleteBoxComponent } from './delete-box/delete-box.component';
 import { GenerateImageLinkComponent } from './generate-image-link/generate-image-link.component';
 import { AdminGuard } from './guards/admin';
-
+import { LoggingComponent } from './logging/logging.component';
 
 @NgModule({
   providers: [
@@ -22,6 +22,7 @@ import { AdminGuard } from './guards/admin';
     DeleteProductComponent,
     DeleteBoxComponent,
     GenerateImageLinkComponent,
+    LoggingComponent,
   ],
   imports: [
     CommonModule,

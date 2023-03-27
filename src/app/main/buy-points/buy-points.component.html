@@ -32,6 +32,12 @@
             class="text-center mb-10 rounded p-2 bg-red-400 text-white font-bold">
             Please check all fields
         </div>
+        <div [ngClass]="{
+            'bg-red-400': paymentStatus === false,
+            'bg-green-400': paymentStatus === true
+        }" *ngIf="showMessage" class="text-white text-center font-bold p-3 rounded">
+            {{message}}
+        </div>
         <div class="mb-3 flex -mx-2">
             <div class="px-2">
                 <label for="type1" class="flex items-center cursor-pointer">
@@ -111,12 +117,16 @@
             <label class="font-bold text-sm mb-2 ml-1">Security code</label>
             <div>
                 <input
+                [formControl]="cardCvc"
                     class="w-32 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
                     placeholder="000" type="text" />
             </div>
         </div>
         <div>
             <button
+            [disabled]="paymentStatus === true || cardFormGroup.invalid || inSubmission"
+            (click)="pay()"
+
                 class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"><i
                     class="mdi mdi-lock-outline mr-1"></i> PAY NOW</button>
         </div>

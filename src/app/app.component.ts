@@ -10,8 +10,10 @@ export class AppComponent {
   title = 'ichibankuji-frontend';
   constructor(private authService: AuthService) {
     this.authService.loginThroughCookie().subscribe((data) => {
-      console.log("HIT VERIFY");
+      console.log("AUTH_SUCESS");
       this.authService.user = data
+    }, (e) => {
+      console.log("AUTH_FAILED")
     })
   }
   ngOnInit() {

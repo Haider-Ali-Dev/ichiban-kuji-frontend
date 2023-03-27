@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainRoutingModule } from './main-routing.module';
 import { HomeComponent } from './home/home.component';
 import { IchibanHomeComponent } from './ichiban-home/ichiban-home.component';
@@ -15,6 +15,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { BuyPointsCardComponent } from './buy-points-card/buy-points-card.component';
 import { BuyProductComponent } from './buy-product/buy-product.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ModelComponent } from './model/model.component';
 
 
 @NgModule({
@@ -30,13 +31,15 @@ import { ProfileComponent } from './profile/profile.component';
     ProductCardComponent,
     BuyPointsCardComponent,
     BuyProductComponent,
-    ProfileComponent
+    ProfileComponent,
+    ModelComponent
   ],
   imports: [
     CommonModule,
     MainRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class MainModule { }

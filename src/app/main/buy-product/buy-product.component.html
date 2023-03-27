@@ -1,16 +1,17 @@
-<div class="">
-    <div *ngIf="!bought" class="">
-        <button (click)="buy()">Buy</button>
-    </div>
-    <div *ngIf="!bought">
-        <div>
-            <img [alt]="this.product.title" [src]="generateLink()"/>
-        </div>
-        <div>
-            <p>
-                {{product.title}}
-            </p>
-        </div>
-    </div>
-</div>
+<div class="flex justify-center   content-center">
+    <div class="flex justify-center flex-col">
+        <button class="p-5 bg-blue-400  rounded" (click)="buy()" *ngIf="!bought">
+            Buy
+        </button>
 
+        <div *ngIf="bought">
+            <div class="flex flex-col">
+                <div>
+                    <h1>You Won</h1>
+                </div>
+                <app-product-card [product]="product"></app-product-card>
+            </div>
+        </div>
+    </div>
+
+</div>

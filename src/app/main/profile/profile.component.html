@@ -2,9 +2,7 @@
 <div>
     <div class="bg-purple-800 flex justify-between p-10">
         <h1 class="text-[30px] font-bold text-white">Welcome, {{auth.user.username}}</h1>
-        <button class="bg-transparent rounded border-2 p-2 text-white font-bold border-white ">
-            Log out
-        </button>
+       
     </div>
     <div class="flex gap-5 justify-center">
         <div class="w-[200px]">
@@ -27,14 +25,44 @@
         <div *ngIf="selectedTab === 'Profile' " class="p-5 text-[20px] sm:[250px] w-[500px] ">
             <h1 class="text-[25px] font-bold">Profile</h1>
             <div>
+                <p *ngIf="!auth.user.address" class="bg-red-400 text-white rounded p-3 ">
+                    You don't have an address. Please add one. <span (click)="openAddAddress()" class="text-blue-400 font-bold cursor-pointer">
+                        Click Here
+                    </span>
+                </p>
+                <div class="p-3 w-[300px]" *ngIf="addAddress">
+                    <div class="flex gap-2 mb-5">
+                        <div class="w-[200px] sm:w-[120px] flex flex-col">
+                            <input [(ngModel)]="country" placeholder="Country" class="p-3 rounded border-2"/>
+                        </div>
+                        <div class="w-[200px] sm:w-[120px] flex flex-col">
+                            <input [(ngModel)]="stateAndCity" placeholder="State/City" class="p-3 rounded border-2"/>
+                        </div>
+                    </div>
+                    <input class="p-3 mb-5 w-[200px] rounded border-2" placeholder="Address" [(ngModel)]="address" />
+                    <button (click)="updateAddress()" [disabled]="!address.length || !country.length || !stateAndCity.length " class="p-3 rounded text-white bg-blue-400 disabled:bg-violet-200">
+                        Update
+                    </button>
+                </div>
                 <p>
-                    Email: {{auth.user.email}}
+                    <span class="font-bold">
+                       Email: 
+                    </span> {{auth.user.email}}
                 </p>
                 <p>
-                    Coins: {{auth.user.points}}
+                    <span class="font-bold">
+                        Coins:
+                    </span> {{auth.user.points}}
                 </p>
                 <p>
-                    Created account on: {{auth.user.created_at | date: 'dd/MM/yyyy'}}
+                    <span class="font-bold">
+                        Created account on:
+                    </span> {{auth.user.created_at | date: 'dd/MM/yyyy'}}
+                </p>
+                <p *ngIf="auth.user.address.length">
+                    <span class="font-bold">
+                        Address:
+                    </span> {{auth.user.address}}
                 </p>
             </div>
 
@@ -42,9 +70,15 @@
 
         <div *ngIf="selectedTab === 'Orders' " class="p-5 text-[20px] sm:[250px] w-[500px] ">
             <h1 class="text-[25px] font-bold">Orders</h1>
-            <div *ngFor="let id of auth.user.orders">
-                {{id['status']}} - {{id['id']}}
+            <div *ngIf="!auth.user.orders.length">
+                <p>No orders.</p>
             </div>
+            <div *ngIf="auth.user.orders.length">
+                <div *ngFor="let id of auth.user.orders">
+                    {{id['status']}} - {{id['id']}}
+                </div>
+            </div>
+
 
         </div>
     </div>

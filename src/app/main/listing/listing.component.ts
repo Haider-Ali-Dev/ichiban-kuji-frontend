@@ -9,7 +9,8 @@ import Listing from 'src/app/models/listing.model';
 export class ListingComponent {
   @Input()
   listings: Array<Listing> = [];
-
+  openModel = true
+  content = 'attention'
 
   calculateAverageCostOfBox(id: String) {
     const lis = this.listings.find((listing) => listing.id === id);

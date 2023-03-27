@@ -5,9 +5,13 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { SigninComponent } from './signin/signin.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './guards/auth-guard';
 
 
 @NgModule({
+  providers: [
+    AuthGuard
+  ],
   declarations: [
     RegisterComponent,
     SigninComponent

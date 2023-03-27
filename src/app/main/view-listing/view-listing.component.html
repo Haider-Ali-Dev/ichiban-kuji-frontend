@@ -1,3 +1,5 @@
+<app-model [openModel]="openModel" [content]="content"></app-model>
+
 <app-navbar></app-navbar>
 
 <div *ngIf="this.listing" class="p-5">
@@ -12,7 +14,7 @@
                 </p>
             </div>
 
-            <div class="flex justify-between w-2">
+            <div  class="flex justify-between w-2">
                 <p class="flex justify-center flex-col content-center">
                     <i class="material-icons text-[28px]">
                         paid</i>
@@ -21,6 +23,13 @@
                     {{calculateAverageCostOfBox()}}
                 </p>
 
+            </div>
+            <div class="w-[300px] text-gray-400">
+                <p>
+                    $5 Shipping, Free shipping for five pieces of goods to contiguous United States Customers
+                    For non-US customers, please contact us through email or facebook regarding your order
+                    info@hexapusacg.com
+                </p>
             </div>
 
             <div class="flex justify-center gap-5 p-5 border-2 bg-[#D4F1F4] w-[300px]">
@@ -37,6 +46,16 @@
 
 
 
+            </div>
+            <div class="w-[300px] flex justify-center gap-2">
+                <p (click)="setModel()">
+                    <i class="material-icons">
+                        info
+                    </i>
+                </p>
+                <p>
+                    How to play
+                </p>
             </div>
             <p class="text-center p-2 rounded bg-red-400 text-white font-bold" *ngIf="showMessage">
                 {{message}} - <a [routerLink]="['', 'buy', 'points']" class="text-blue-400">

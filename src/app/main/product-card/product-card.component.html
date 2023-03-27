@@ -4,6 +4,11 @@
         <img class="w-auto h-auto  rounded" [alt]="product.title" [src]="generateLink()">
     </div>
     <div class="mt-5">
+        <p class="text-[20px] text-red-400 font-bold" *ngIf="product.amount === 0">
+            SOLD OUT
+        </p>
+    </div>
+    <div class="mt-5">
         <p class="text-center text-[25px]">
             {{product.title}}
         </p>
@@ -19,6 +24,12 @@
                 Level
             </span> {{transformLevel(product.level)}}
         </h1>
+    </div>
+
+    <div>
+        <p>
+            {{product.amount}}/{{product.ini_amount}}
+        </p>
     </div>
 
 </div>

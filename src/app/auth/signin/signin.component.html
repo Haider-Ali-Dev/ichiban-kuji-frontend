@@ -6,6 +6,7 @@
                 <form (ngSubmit)="login()" [formGroup]="formGroup" class="sm:w-fit bg-white w-fit rounded p-5  border-2 border-white">
                     <div class="flex gap-5 flex-col  ">
                         <h1 class="text-center font-bold text-[30px]">Sign In</h1>
+                        
                         <p>Fill out this form in order to buy products.</p>
                         <div *ngIf="hasError">
                             <p *ngClass="{hasError: 'bg-red-400' }" class="bg-blue-400 text-center p-4 rounded">
@@ -38,7 +39,7 @@
                                
                             </p>
                         </div>
-                        <button  type="submit" [disabled]="hasError || formGroup.invalid"
+                        <button  type="submit" [disabled]="formGroup.invalid"
                             class="disabled:bg-violet-400 bg-blue-700 p-4 rounded">Sign in</button>
                     </div>
 
