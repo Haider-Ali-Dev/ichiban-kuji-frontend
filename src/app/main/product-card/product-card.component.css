@@ -1,0 +1,4 @@
+.bg-card {
+    background-image: linear-gradient(-45deg, #e1f6ff 0%, #f4fcff 23%, #e1f6ff 49%, #eff6ff 76%, #e1f6ff 100%), linear-gradient(-45deg, #dddddd 0%, #ffffff 27%, #e9e9e9 54%, #ffffff 75%, #e1e1e1 100%);
+    border: 2px solid #d6edff
+}

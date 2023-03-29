@@ -27,12 +27,14 @@ export class BoxFormComponent {
   imageLink = new FormControl('',  [
     Validators.required
   ]);
+  
+  
   listingForm = new FormGroup({
     title: this.title,
     description: this.description,
     level: this.level,
     amount: this.amount,
-    imageLink: this.imageLink
+    imageLink: this.imageLink,
   })
 
 

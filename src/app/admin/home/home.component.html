@@ -57,8 +57,10 @@
                 {{message.message}}
             </p>
             <input (change)="setTitle($event)" class="p-3" placeholder="Title">
+            <input (change)="setDescription($event)" class="p-3 mt-2" placeholder="Description">
+
             <select [(ngModel)]="listingType"  class="p-3 rounded mt-2">
-                <option value="">Please select the category</option>
+                <option value="">Please select where you want to post listing</option>
                 <option value="HEX">
                     Hexapus
                 </option>
@@ -66,6 +68,7 @@
                     Ichibankuji
                 </option>
             </select>
+
             <input (change)="setFile($event)" type="File">
             <button [disabled]="!fileIsUploaded || !this.listingtitle"
                 class="disabled:bg-violet-200 mt-2 p-3 rounded bg-blue-400" (click)="uploadFile()">Create</button>
@@ -78,6 +81,8 @@
                 <option *ngFor="let listing of listings" [value]="listing.id">{{listing.title}}</option>
             </select>
             <input [(ngModel)]="boxPrice" class="mt-2 p-3" placeholder="Price" type="number">
+            <input [(ngModel)]="boxOriginalPrice" class="mt-2 p-3" placeholder="Original Price">
+            <input [(ngModel)]="noOfBoxes" class="mt-2 p-3" placeholder="Number of boxes">
             <div>
                 <p>Current Added Products: {{productList.length}}</p>
                 <app-box-form [listings]="listings" [productList]="productList"></app-box-form>

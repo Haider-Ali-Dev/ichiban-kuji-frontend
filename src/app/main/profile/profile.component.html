@@ -75,7 +75,7 @@
             </div>
             <div *ngIf="auth.user.orders.length">
                 <div *ngFor="let id of auth.user.orders">
-                    {{id['status']}} - {{id['id']}}
+                    {{id['status']}} - {{id['name']}}
                 </div>
             </div>
 

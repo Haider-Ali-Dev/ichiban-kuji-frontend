@@ -11,7 +11,13 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
+  getAllCategories() {
+    return this.http.get('http://localhost:3000/get/categories', {
+      withCredentials: true
+    })
+  }
   createBox(box_data: BoxData) {
+    console.log(box_data)
     return this.http.post('http://localhost:3000/admin/create/box', box_data, {
       withCredentials: true,
     })
