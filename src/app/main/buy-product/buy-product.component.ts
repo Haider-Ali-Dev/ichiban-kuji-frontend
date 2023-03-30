@@ -19,9 +19,11 @@ export class BuyProductComponent {
 
 
   buy() {
+
     this.listingService.buyBox(this.auth.user?.id as string, this.boxId)
       .subscribe(res => {
         this.product = res;
+        this.bought = true;
     })
   }
 
