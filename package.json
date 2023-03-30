@@ -10,7 +10,8 @@
     "dev:ssr": "ng run ichibankuji-frontend:serve-ssr",
     "serve:ssr": "node dist/ichibankuji-frontend/server/main.js",
     "build:ssr": "ng build && ng run ichibankuji-frontend:server",
-    "prerender": "ng run ichibankuji-frontend:prerender"
+    "prerender": "ng run ichibankuji-frontend:prerender",
+    "vercel-build": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {

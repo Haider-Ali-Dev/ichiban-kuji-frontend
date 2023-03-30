@@ -1,0 +1,14 @@
+{
+    "version": 2,
+    "public": true,
+    "name": "ichibankuji",
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/api" }
+    ],
+    "functions": {
+      "api/index.js": {
+        "includeFiles": "dist/ichibankuji-frontend/browser/**"
+      }
+    }
+  }
+  
