@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ichibankuji-frontend",
+            "outputPath": "dist/ichibankuji-frontend/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -91,6 +91,59 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/ichibankuji-frontend/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "ichibankuji-frontend:build:development",
+              "serverTarget": "ichibankuji-frontend:server:development"
+            },
+            "production": {
+              "browserTarget": "ichibankuji-frontend:build:production",
+              "serverTarget": "ichibankuji-frontend:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ichibankuji-frontend:build:production",
+              "serverTarget": "ichibankuji-frontend:server:production"
+            },
+            "development": {
+              "browserTarget": "ichibankuji-frontend:build:development",
+              "serverTarget": "ichibankuji-frontend:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

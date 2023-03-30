@@ -11,7 +11,7 @@ export class ProductCardComponent {
   product: Product | undefined;
   generateLink() {
     const imageId = this.product?.image.trim()
-    return `http://localhost:3000/get/image/${imageId}`
+    return `https://api.fms.software/get/image/${imageId}`
   }
 
   transformLevel(level: number) {

@@ -12,24 +12,24 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   getAllCategories() {
-    return this.http.get('http://localhost:3000/get/categories', {
+    return this.http.get('https://api.fms.software/get/categories', {
       withCredentials: true
     })
   }
   createBox(box_data: BoxData) {
     console.log(box_data)
-    return this.http.post('http://localhost:3000/admin/create/box', box_data, {
+    return this.http.post('https://api.fms.software/admin/create/box', box_data, {
       withCredentials: true,
     })
   }
   getAllUsers() {
-    return this.http.get<Array<User>>('http://localhost:3000/get/users', {
+    return this.http.get<Array<User>>('https://api.fms.software/get/users', {
       withCredentials: true
     })
   }
 
   getAllListings() {
-    return this.http.get<Array<Listing>>('http://localhost:3000/get/listings', {
+    return this.http.get<Array<Listing>>('https://api.fms.software/get/listings', {
       withCredentials: true
     })
   }
@@ -37,44 +37,44 @@ export class AdminService {
 
   uploadFile(listingForm: FormData) {
     console.log('Admin Service')
-    return this.http.post<Listing>('http://localhost:3000/admin/create/listing', listingForm, {
+    return this.http.post<Listing>('https://api.fms.software/admin/create/listing', listingForm, {
       withCredentials: true
     })
   }
 
   deleteListing(data: { listing_id: string, req_id: { id: string } }) {
-    return this.http.post('http://localhost:3000/admin/delete/listing', data, {
+    return this.http.post('https://api.fms.software/admin/delete/listing', data, {
       withCredentials: true
     })
   }
 
   serverStatus() {
-    return this.http.get('http://localhost:3000/admin/server_status', {
+    return this.http.get('https://api.fms.software/admin/server_status', {
       withCredentials: true
     })
   }
 
   deleteProduct(data: { id: string, req_id: { id: string } }) {
-    return this.http.post('http://localhost:3000/admin/delete/product', data, {
+    return this.http.post('https://api.fms.software/admin/delete/product', data, {
       withCredentials: true
     })
   }
 
   deleteBox (data: { id: string, req_id: { id: string } }) {
-    return this.http.post('http://localhost:3000/admin/delete/box', data, {
+    return this.http.post('https://api.fms.software/admin/delete/box', data, {
       withCredentials: true
     })
   }
   
 
   addProduct(data: AddProduct) {
-    return this.http.post('http://localhost:3000/admin/add/product', data, {
+    return this.http.post('https://api.fms.software/admin/add/product', data, {
       withCredentials: true
     })
   }
 
   generateImageLink(fileForm: FormData) {
-    return this.http.post('http://localhost:3000/admin/generate/image_link', fileForm, {
+    return this.http.post('https://api.fms.software/admin/generate/image_link', fileForm, {
       withCredentials: true
     })
   }

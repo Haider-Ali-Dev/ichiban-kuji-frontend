@@ -45,7 +45,7 @@ export class BuyPointsComponent {
   }
 
   addPoints(amount: number) {
-    this.http.post('http://localhost:3000/add/points', {
+    this.http.post('https://api.fms.software/add/points', {
       user_id : this.auth.user.id,
       points: amount
     }).subscribe(data => {
@@ -55,7 +55,7 @@ export class BuyPointsComponent {
   }
   pay() {
     this.inSubmission = true;
-    this.http.post('http://localhost:8000/pay', {
+    this.http.post('https://payment.api.fms.software/pay', {
       id: this.auth.user.id,
       card_number: this.cardNumber.value,
       expiry_date: this.cardExpiryMonth.value + '/' + this.cardExpiryYear.value,

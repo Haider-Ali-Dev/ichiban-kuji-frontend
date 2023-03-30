@@ -13,7 +13,7 @@ import { ErrorModule } from './error/error.module';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     AuthModule,
     SharedModule,

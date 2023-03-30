@@ -10,7 +10,7 @@ export class AuthGuard implements CanActivate {
     constructor(private auth: AuthService, private router: Router) { }
     async canActivate(): Promise<boolean | UrlTree> {
         try {
-            const res = await fetch('http://localhost:3000/auth/verify', {
+            const res = await fetch('https://api.fms.software/auth/verify', {
                 method: 'GET',
                 credentials: 'include'
             })

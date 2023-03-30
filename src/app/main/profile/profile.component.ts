@@ -25,7 +25,7 @@ export class ProfileComponent {
   }
 
   updateAddress() {
-    this.http.post('http://localhost:3000/update/address', {
+    this.http.post('hhttps://api.fms.software/update/address', {
 
       user_id: this.auth.user.id,
       address: `${this.address}, ${this.stateAndCity}, ${this.country}`

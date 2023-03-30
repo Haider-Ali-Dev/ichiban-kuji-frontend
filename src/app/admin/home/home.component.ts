@@ -245,7 +245,7 @@ export class HomeComponent {
 
   setListingId(e: any) {
     this.selectedListingIdForProductCreation = e.target.value
-    this.http.get(`http://localhost:3000/get/boxes/${e.target.value}`).subscribe((res: any) => {
+    this.http.get(`https://api.fms.software/get/boxes/${e.target.value}`).subscribe((res: any) => {
       this.boxes = res
     })
   }
