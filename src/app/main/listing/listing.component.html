@@ -17,7 +17,8 @@
                             paid
                         </span>
                         <p>
-                            {{calculateAverageCostOfBox(listing.id)}}
+                            <span class="text-[25px] mr-2">{{calculateAverageCostOfBox(listing.id)}}</span> 
+                            <span class="text-[25px] line-through">{{listing.boxes[0].original_price}}</span>
                         </p>
                     </div>
 

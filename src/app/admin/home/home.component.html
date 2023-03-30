@@ -59,7 +59,7 @@
             <input (change)="setTitle($event)" class="p-3" placeholder="Title">
             <input (change)="setDescription($event)" class="p-3 mt-2" placeholder="Description">
 
-            <select [(ngModel)]="listingType"  class="p-3 rounded mt-2">
+            <select [(ngModel)]="listingType" class="p-3 rounded mt-2">
                 <option value="">Please select where you want to post listing</option>
                 <option value="HEX">
                     Hexapus
@@ -89,7 +89,8 @@
             </div>
             <button (click)="createBox()" [disabled]="!productList.length || !boxPrice || !listingId"
                 class="disabled:bg-violet-200  mt-2 p-3 rounded bg-blue-400">Create Box</button>
-
+            <button class=" disabled:bg-violet-200  mt-3 p-3 rounded bg-blue-400"
+                (click)="resetBoxCreation()">Reset</button>
         </div>
 
         <div class="p-4 flex flex-col w-fit bg-slate-400 rounded">
@@ -114,24 +115,20 @@
         <div class="p-4 flex flex-col w-fit bg-slate-400 rounded">
             <h1 class="text-[20px] text-center">Create Product</h1>
             <div class="flex flex-col gap-3">
-                <select  (change)="setListingId($event)" class="p-3 rounded w-[300px]">
+                <select (change)="setListingId($event)" class="p-3 rounded w-[300px]">
                     <option value="">Please select the listing</option>
                     <option *ngFor="let listing of listings" [value]="listing.id">{{listing.title}}</option>
                 </select>
-                <select *ngIf="selectedListingIdForProductCreation.length" (change)="setBoxId($event)" class="p-3 rounded w-[300px]">
-                    <option value="">Please select the box</option>
-                    <option *ngFor="let box of selectedBox" [value]="box.id">{{box.id}}</option>
-                </select>
-
             </div>
-            <app-box-form *ngIf="selectedBoxIdForProductCreation.length && selectedListingIdForProductCreation.length"
+            <app-box-form *ngIf="selectedListingIdForProductCreation.length"
                 [productList]="addProductList" [listings]="listings"></app-box-form>
-            <button (click)="createProducts()" [disabled]="!addProductList.length" class="disabled:bg-violet-200  mt-2 p-3 rounded bg-blue-400">
+            <button (click)="createProducts()" [disabled]="!addProductList.length"
+                class="disabled:bg-violet-200  mt-2 p-3 rounded bg-blue-400">
                 Create Products
             </button>
 
         </div>
-        <div  class="p-4 flex flex-col w-fit bg-slate-400 rounded">
+        <div class="p-4 flex flex-col w-fit bg-slate-400 rounded">
             <app-delete-box [listings]="listings"></app-delete-box>
         </div>
         <div class="p-4 flex flex-col w-fit bg-slate-400 rounded">

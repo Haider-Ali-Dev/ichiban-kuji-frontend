@@ -16,6 +16,8 @@ import { BuyPointsCardComponent } from './buy-points-card/buy-points-card.compon
 import { BuyProductComponent } from './buy-product/buy-product.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ModelComponent } from './model/model.component';
+import { BoxModelComponent } from './box-model/box-model.component';
+import { BoxModelProductComponent } from './box-model-product/box-model-product.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { ModelComponent } from './model/model.component';
     BuyPointsCardComponent,
     BuyProductComponent,
     ProfileComponent,
-    ModelComponent
+    ModelComponent,
+    BoxModelComponent,
+    BoxModelProductComponent
   ],
   imports: [
     CommonModule,

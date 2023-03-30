@@ -9,6 +9,12 @@ export class ListingService {
 
   constructor(private http: HttpClient) { }
 
+  getRandomListings() {
+    return this.http.get<Array<Listing>>('http://localhost:3000/get/random/listings', {
+      withCredentials: true
+    })
+  }
+
   getAllListings() {
     return this.http.get<Array<Listing>>('http://localhost:3000/get/listings', {
       withCredentials: true

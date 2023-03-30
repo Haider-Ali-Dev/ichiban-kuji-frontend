@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import AddProduct from 'src/app/models/add-product.model';
@@ -14,7 +15,7 @@ export class HomeComponent {
   setImageLink($event: Event) {
     throw new Error('Method not implemented.');
   }
-  constructor(private adminService: AdminService, private auth: AuthService) { }
+  constructor(private adminService: AdminService, private auth: AuthService, private http: HttpClient) { }
   numberOfUsers = 0;
   users: User[] = [];
   listingForm = new FormData()
@@ -39,9 +40,9 @@ export class HomeComponent {
   error: { type: string, message: string } = { type: '', message: '' };
   addProductList: Array<{ title: string, description: string, level: number, amount: number, image: string }> = [];
   // For product creation
-  selectedBoxIdForProductCreation = ""
+  // selectedBoxIdForProductCreation = ""
   selectedListingIdForProductCreation = ""
-  selectedBox: Array<Box> = []
+  boxes: Array<Box> = []
   // Categories
   categories = []
   selectedCategory = ""
@@ -224,31 +225,28 @@ export class HomeComponent {
   }
 
   createProducts() {
-    this.adminService.addProduct({
-      req_id: {
-        id: this.auth.user.id
-      },
-      product_data: this.addProductList,
-      box_id: this.selectedBoxIdForProductCreation
-    }).subscribe((res: any) => {
-      this.listings = res;
-      this.addProductList = []
-      this.message.for = "CREATE_PRODUCTS"
-      this.message.message = "Products created successfully"
+    this.boxes.map((box: Box) => {
+      this.adminService.addProduct({
+        req_id: {
+          id: this.auth.user.id
+        },
+        product_data: this.addProductList,
+        box_id: box.id
+      }).subscribe((res: any) => {
+        this.listings = res;
+        this.addProductList = []
+        this.message.for = "CREATE_PRODUCTS"
+        this.message.message = "Products created successfully"
+      })
     })
 
-  }
 
-  setBoxId(e: any) {
-    this.selectedBoxIdForProductCreation = e.target.value
   }
 
   setListingId(e: any) {
     this.selectedListingIdForProductCreation = e.target.value
-    this.listings.map((l) => {
-      if (l.id === this.selectedListingIdForProductCreation) {
-        this.selectedBox = l.boxes
-      }
+    this.http.get(`http://localhost:3000/get/boxes/${e.target.value}`).subscribe((res: any) => {
+      this.boxes = res
     })
   }
 

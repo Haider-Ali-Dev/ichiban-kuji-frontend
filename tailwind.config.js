@@ -3,6 +3,11 @@ module.exports = {
   content: [
     "./src/**/*.{html,ts}",
   ],
+  variants: {
+    options: {
+      safeList: ['border-blue-400']
+    }
+  },
   theme: {
     screens: {
       '2xl': {'max': '1535px'},

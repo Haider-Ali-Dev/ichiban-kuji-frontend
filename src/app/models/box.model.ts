@@ -8,6 +8,7 @@ interface Box {
     products: Product[];
     total: number;
     available_products: number;
+    original_price: number;
 }
 
 export default Box;

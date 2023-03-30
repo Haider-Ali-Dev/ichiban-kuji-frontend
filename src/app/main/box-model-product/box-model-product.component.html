@@ -1,0 +1,25 @@
+<div (click)="selectBox()"  [ngClass]="{'border-blue': this.selectedBox?.id === box.id}"
+    class=" gap-3 rounded border-2">
+    <div class="p-2 flex justify-between bg-[#fafafa] mb-2">
+        <p>
+            Box {{index + 1}}
+        </p>
+        <p>
+            {{totalAvailableProducts}}
+        </p>
+    </div>
+    <div class="flex mb-3 gap-5 p-2 hover:cursor-pointer">
+        <div>
+            <img class="w-auto h-[80px]" [src]="listingImageUrl" />
+
+        </div>
+        <div class="grid grid-cols-4 gap-2">
+            <div class="flex p-1 h-fit gap-10 justify-between bg-[#fafafa]" *ngFor="let product of box.products">
+                <p>{{transformLevel(product.level)}}</p>
+                <p><span class="text-[#00b7e9]">{{product.amount}}</span>/{{product.ini_amount}}</p>
+
+            </div>
+        </div>
+    </div>
+    
+</div>
