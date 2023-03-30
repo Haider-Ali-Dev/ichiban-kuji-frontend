@@ -3,7 +3,7 @@
         <div class="flex justify-center flex-col h-[100vh] w-[100%]  content-center">
             <div class="flex justify-center">
 
-                <form (ngSubmit)="register()" [formGroup]="formGroup" class="bg-white w-fit rounded p-5  border-2 border-white">
+                <form (ngSubmit)="register()" [formGroup]="formGroup" class="bg-white w-fit rounded p-5 sm:w-[400px]  border-2 border-white">
                     <div class="flex gap-5 flex-col  ">
                         <h1 class="text-center font-bold text-[30px]">Register</h1>
                         <p>Fill out this form in order to buy products.</p>
@@ -15,7 +15,7 @@
                         
 
                         <input [formControl]="name" placeholder="Username"
-                            class="w-[500px] inline bg-gray-200 p-3 border-2 rounded hover:border-b-2 hover:border-b-blue-500" />
+                            class=" inline bg-gray-200 p-3 border-2 rounded hover:border-b-2 hover:border-b-blue-500" />
                         <div>
                             <p class="text-red-400" *ngIf="name.errors && email.touched">
                                 <!-- Display Errors Messages -->
