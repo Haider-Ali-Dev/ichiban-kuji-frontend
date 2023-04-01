@@ -55,7 +55,7 @@ export class BuyPointsComponent {
   }
   pay() {
     this.inSubmission = true;
-    this.http.post('https://payment.api.fms.software/pay', {
+    this.http.post('http://localhost:8000/pay', {
       id: this.auth.user.id,
       card_number: this.cardNumber.value,
       expiry_date: this.cardExpiryMonth.value + '/' + this.cardExpiryYear.value,
