@@ -33,7 +33,7 @@ export class AuthService {
       address: ''
     }
 
-    this.http.get('https://api.fms.software/auth/logout', {
+    this.http.get('http://localhost:3000/auth/logout', {
       withCredentials: true
     }).subscribe((data) => {
       if (data) {
@@ -43,20 +43,20 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    return this.http.post<User>('https://api.fms.software/auth/signin', { email, password }, {
+    return this.http.post<User>('http://localhost:3000/auth/signin', { email, password }, {
       withCredentials: true,
 
     });
   }
 
   register(email: string, password: string, username: string) {
-    return this.http.post<User>('https://api.fms.software/auth/register', { email, password, username }, {
+    return this.http.post<User>('http://localhost:3000/auth/register', { email, password, username }, {
       withCredentials: true
     });
   }
 
   loginThroughCookie() {
-    return this.http.get<User>('https://api.fms.software/auth/verify', {
+    return this.http.get<User>('http://localhost:3000/auth/verify', {
       withCredentials: true
     });
   }

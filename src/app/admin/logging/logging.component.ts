@@ -23,7 +23,7 @@ export class LoggingComponent implements OnInit {
       id: string,
       created_at: string,
       action: string,
-    }>>('https://api.fms.software/admin/get/logs').subscribe((e) => {
+    }>>('http://localhost:3000/admin/get/logs').subscribe((e) => {
       this.logs = e
     })
   }

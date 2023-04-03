@@ -11,7 +11,7 @@ export class AdminGuard implements CanActivate {
     ) { }
 
     async canActivate(): Promise<boolean> {
-        const res = await fetch('https://api.fms.software/auth/verify', {
+        const res = await fetch('http://localhost:3000/auth/verify', {
             method: 'GET',
             credentials: 'include'
         })

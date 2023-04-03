@@ -45,7 +45,7 @@ export class BuyPointsComponent {
   }
 
   addPoints(amount: number) {
-    this.http.post('https://api.fms.software/add/points', {
+    this.http.post('http://localhost:3000/add/points', {
       user_id : this.auth.user.id,
       points: amount
     }).subscribe(data => {

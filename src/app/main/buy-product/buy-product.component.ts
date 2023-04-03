@@ -29,7 +29,7 @@ export class BuyProductComponent {
 
   generateLink() {
     const imageId = this.product?.image.trim()
-    return `https://api.fms.software/get/image/${imageId}`
+    return `http://localhost:3000/get/image/${imageId}`
   }
 
 }
