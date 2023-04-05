@@ -183,6 +183,9 @@ export class HomeComponent {
         this.error.type = "BOX_CREATION_ERROR";
         this.error.message = "There was an error creating the box. Please try again later."
       })
+
+      this.message.for = "BOX_CREATION"
+      this.message.message = `Boxes created successfully`
     })
   }
 

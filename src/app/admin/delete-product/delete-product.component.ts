@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 import Box from 'src/app/models/box.model';
 import Listing from 'src/app/models/listing.model';
 import Product from 'src/app/models/product.model';
@@ -10,7 +11,7 @@ import { AdminService } from '../admin.service';
   styleUrls: ['./delete-product.component.css']
 })
 export class DeleteProductComponent {
-  constructor(private admin: AdminService) {
+  constructor(private admin: AdminService, private auth: AuthService) {
 
   }
   @Input()
@@ -28,7 +29,7 @@ export class DeleteProductComponent {
 
   deleteProduct() {
     console.log(this.selectedProductId)
-    this.admin.deleteProduct({ id: this.selectedProductId, req_id: { id: '299b126e-a1c1-437f-b51e-a18fb633204a' } })
+    this.admin.deleteProduct({ id: this.selectedProductId, req_id: { id: this.auth.user.id } })
       .subscribe((res: any) => {
         this.listings = res;
       })
